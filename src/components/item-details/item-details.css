@@ -22,3 +22,6 @@
 .item-details button {
   margin-top: 5px;
 }
+.list-group-flush li {
+  font-size: 16px;
+}

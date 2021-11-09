@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 
-import ErrorButton from '../error-button/error-button';
 
 import './item-details.css';
 
@@ -30,8 +29,8 @@ export default class ItemDetails extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.itemId !== prevProps.itemId ||
-      this.props.getData !== prevProps.getData ||
-      this.props.getImageUrl !== prevProps.getImageUrl) {
+        this.props.getData !== prevProps.getData ||
+        this.props.getImageUrl !== prevProps.getImageUrl) {
       this.updateItem();
     }
   }
@@ -58,13 +57,16 @@ export default class ItemDetails extends Component {
       return <span>Select a item from a list</span>;
     }
 
+
     const { name } = item;
 
     return (
       <div className="item-details card">
+
         <img className="item-image"
-          src={image}
-          alt="item"/>
+             src={image}
+             alt="item"
+        />
 
         <div className="card-body">
           <h4>{name}</h4>
@@ -75,7 +77,6 @@ export default class ItemDetails extends Component {
               })
             }
           </ul>
-          <ErrorButton />
         </div>
       </div>
     );

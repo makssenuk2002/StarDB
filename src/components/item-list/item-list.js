@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 import { withData } from '../hoc-helpers';
-import SwapiService from '../../services/swapi-service';
+import SwapiService from "../../services/swapi-service";
 import './item-list.css';
 
 const ItemList = (props) => {
@@ -14,30 +14,23 @@ const ItemList = (props) => {
     const label = renderLabel(item);
 
     return (
-      <li className="list-group-item"
-          key={id}
-          onClick={() => onItemSelected(id)}>
-        {label}
-      </li>
+        <li className="list-group-item"
+            key={id}
+            onClick={() => onItemSelected(id)}>
+          {label}
+        </li>
     );
   });
 
   return (
-    <ul className="item-list list-group">
-      {items}
-    </ul>
+      <ul className="item-list list-group">
+        {items}
+      </ul>
   );
 };
-
 ItemList.defaultProps = {
-  onItemSelected: () => {}
-};
-
-ItemList.propTypes = {
-  onItemSelected: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  children: PropTypes.func.isRequired
-};
+  onItemSelected : () =>{}
+}
 
 const { getAllPeople } = new SwapiService();
 

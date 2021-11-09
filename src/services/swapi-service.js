@@ -1,6 +1,6 @@
 export default class SwapiService {
 
-  _apiBase = 'https://swapi.co/api';
+  _apiBase = 'https://swapi.dev/api';
   _imageBase = 'https://starwars-visualguide.com/assets/img';
 
   getResource = async (url) => {
@@ -17,7 +17,6 @@ export default class SwapiService {
     const res = await this.getResource(`/people/`);
     return res.results
       .map(this._transformPerson)
-      .slice(0, 5);
   };
 
   getPerson = async (id) => {
@@ -29,7 +28,7 @@ export default class SwapiService {
     const res = await this.getResource(`/planets/`);
     return res.results
       .map(this._transformPlanet)
-      .slice(0, 5);
+        .slice(1,20)
   };
 
   getPlanet = async (id) => {
@@ -41,12 +40,13 @@ export default class SwapiService {
     const res = await this.getResource(`/starships/`);
     return res.results
       .map(this._transformStarship)
-      .slice(0, 5);
+        .slice(2,9)
   };
 
   getStarship = async (id) => {
     const starship = await this.getResource(`/starships/${id}/`);
     return this._transformStarship(starship);
+
   };
 
   getPersonImage = ({id}) => {
@@ -72,7 +72,13 @@ export default class SwapiService {
       name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
-      diameter: planet.diameter
+      diameter: planet.diameter,
+      orbital_period: planet.orbital_period,
+      climate: planet.climate,
+      gravity: planet.gravity,
+      terrain: planet.terrain,
+      surface_water: planet.surface_water
+
     };
   };
 
@@ -86,7 +92,12 @@ export default class SwapiService {
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargo_capacity
+      cargoCapacity: starship.cargo_capacity,
+      consumables: starship.consumables,
+      hyperdrive_rating: starship.hyperdrive_rating,
+      MGLT: starship.MGLT,
+      starship_class: starship.starship_class,
+      created: starship.created
     }
   };
 
@@ -96,7 +107,11 @@ export default class SwapiService {
       name: person.name,
       gender: person.gender,
       birthYear: person.birth_year,
-      eyeColor: person.eye_color
+      eyeColor: person.eye_color,
+      hair_color:person.hair_color,
+      homeworld: person.homeworld,
+      mass: person.mass,
+      height: person.height
     }
   }
 }
